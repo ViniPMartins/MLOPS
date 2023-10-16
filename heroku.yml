@@ -1,0 +1,23 @@
+build:
+  docker:
+    ml-api:
+      dockerfile: Dockerfile-api
+    home:
+      dockerfile: Dockerfile-home
+run:
+  ml-api:
+    command:
+      - ./initialize-api.sh # Substitua pelo comando de inicialização do seu serviço
+    env: 
+      BASIC_AUTH_USERNAME: ${BASIC_AUTH_USERNAME}
+      BASIC_AUTH_PASSWORD: ${BASIC_AUTH_PASSWORD}
+    ports:
+      - 5000
+  home:
+    command:
+      - ./initialize-home.sh # Substitua pelo comando de inicialização do seu serviço
+    env: 
+      BASIC_AUTH_USERNAME: ${BASIC_AUTH_USERNAME}
+      BASIC_AUTH_PASSWORD: ${BASIC_AUTH_PASSWORD}
+    ports:
+      - 3000
